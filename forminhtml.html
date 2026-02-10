@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body style="background-color: rgb(201, 217, 217);">
+  <h1 style="color: brown">
+    <center>Registration Form
+      <hr>
+    </center>
+  </h1>
+  <form action="/action.php">
+    Name:<input type="text" placeholder="Type something here" />
+    <br />
+    Password:<input type="password" placeholder="password" />
+    <br />
+    <h3 style="color: rgb(135, 90, 36)">Select Your Class</h3>
+    <br />
+    <label for="101">
+      <input type="radio" value="class XI" name="class" id="101" />class XI
+    </label>
+    <br />
+    <label for="102">
+      <input type="radio" value="class XII" name="class" id="102" />class XII </label><br /><br />
+    <h3>Select fav subjects</h3>
+    <label for="101">
+      <input type="radio" name="subjct" id="101" />maths </label><br />
+    <label for="102">
+      <input type="radio" name="subjct" id="102" />physics </label><br />
+    <label for="103">
+      <input type="radio" name="subjct" id="103" />chemistry </label><br />
+    <label for="104">
+      <input type="radio" name="subjct" id="104" />hindi </label><br />
+    <h3>Select your city</h3>
+    <select name="city">
+      <option value="Delhi">delhi</option>
+      <option value="mumbai">mumbai</option>
+      <option value="banglore">banglore</option>
+      <option value="pune">pune</option>
+    </select><br /><br />
+    <textarea name="feedback" id="101" placeholder="please give you fedback here" rows="5">
+feedback</textarea>
+    <input type="submit" value="submit" />
+  </form>
+</body>
+
+</html>
