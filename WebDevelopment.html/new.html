@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 300px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(193, 138, 111);"> 
+    
+    <h1>Calendar Viewer</h1>
+    <label for="month">Month: </label>
+    <select id="month">
+        <script>
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            months.forEach((month, index) => {
+                document.write(`<option value="${index}">${month}</option>`);
+            });
+        </script>
+    </select>
+
+    <label for="year">Year: </label>
+    <select id="year">
+        <script>
+            const currentYear = new Date().getFullYear();
+            for (let i = currentYear - 50; i <= currentYear + 50; i++) {
+                document.write(`<option value="${i}">${i}</option>`);
+            }
+        </script>
+    </select>
+
+    <button onclick="displayCalendar()">Show Calendar</button>
+
+    <div id="calendar"></div>
+
+    <script>
+        function displayCalendar() {
+            const month = parseInt(document.getElementById('month').value);
+            const year = parseInt(document.getElementById('year').value);
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            let calendarHTML = `<table><tr>`;
+            const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            days.forEach(day => {
+                calendarHTML += `<th>${day}</th>`;
+            });
+            calendarHTML += `</tr><tr>`;
+
+            for (let i = 0; i < firstDay; i++) {
+                calendarHTML += `<td></td>`;
+            }
+
+            for (let date = 1; date <= daysInMonth; date++) {
+                calendarHTML += `<td>${date}</td>`;
+                if ((firstDay + date) % 7 === 0) {
+                    calendarHTML += `</tr><tr>`;
+                }
+            }
+
+            calendarHTML += `</tr></table>`;
+            document.getElementById('calendar').innerHTML = calendarHTML;
+        }
+    </script>
+</body>
+</html>
